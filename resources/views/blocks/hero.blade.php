@@ -1,24 +1,27 @@
-<section class="relative bg-slate-900 border-b border-white/10 overflow-hidden">
+<section class="hero min-h-[70vh] bg-base-200" 
     @if(isset($data['background_image']))
-        <div class="absolute inset-0 block w-full h-full bg-cover bg-center bg-no-repeat" style="background-image: url('{{ Storage::url($data['background_image']) }}'); opacity: 0.4;"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
-    @endif
+        style="background-image: url('{{ Storage::url($data['background_image']) }}');"
+    @endif>
     
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-48 flex items-center">
-        <div class="w-full lg:w-2/3">
-            <h1 class="text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6">
+    @if(isset($data['background_image']))
+        <div class="hero-overlay bg-opacity-80 bg-base-300"></div>
+    @endif
+
+    <div class="hero-content text-center w-full max-w-5xl">
+        <div class="max-w-4xl py-12">
+            <h1 class="mb-5 text-5xl lg:text-7xl font-bold leading-tight">
                 {{ $data['title'] ?? 'The Future Belongs To Top Performers' }}
             </h1>
-            <p class="text-xl lg:text-2xl text-slate-300 font-light max-w-2xl mb-10">
+            <p class="mb-8 text-xl lg:text-3xl opacity-80 font-light">
                 {{ $data['subtitle'] ?? 'Our mission is to foster a rigorous academic environment rooted in principles.' }}
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 @if(isset($data['primary_button_label']) && isset($data['primary_button_url']))
-                    <a href="{{ $data['primary_button_url'] }}" class="inline-flex justify-center items-center px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg shadow-[0_0_20px_rgba(79,70,229,0.4)] transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                    <a href="{{ $data['primary_button_url'] }}" class="btn btn-primary btn-lg rounded-full">
                         {{ $data['primary_button_label'] }}
                     </a>
                 @endif
-                <a href="#explore" class="inline-flex justify-center items-center px-8 py-4 bg-transparent border border-slate-500 hover:border-slate-300 text-white font-semibold rounded-lg transition-all duration-300">
+                <a href="#explore" class="btn btn-outline btn-lg rounded-full">
                     Explore Our Campus
                 </a>
             </div>

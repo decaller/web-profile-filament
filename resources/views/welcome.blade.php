@@ -4,7 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        @php
+            $settings = \App\Models\Setting::first();
+        @endphp
+        <title>{{ $settings?->site_title ?? config('app.name', 'Laravel') }}</title>
+        @if($settings?->site_favicon)
+            <link rel="icon" href="{{ Storage::url($settings->site_favicon) }}">
+        @endif
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
