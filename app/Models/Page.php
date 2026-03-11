@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Datlechin\FilamentMenuBuilder\Contracts\MenuPanelable;
 use Datlechin\FilamentMenuBuilder\Concerns\HasMenuPanel;
 
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Page extends Model implements MenuPanelable
 {
-    use HasMenuPanel, HasSEO;
+    use HasFactory, HasMenuPanel, HasSEO;
 
     public function getDynamicSEOData(): SEOData
     {

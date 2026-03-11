@@ -4,9 +4,13 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "e2e:seed": "php artisan migrate:fresh --seed --env=e2e",
+        "e2e:server": "bash -c 'trap \"exit 0\" TERM; php artisan serve --env=e2e --host=127.0.0.1 --port=8001 > /tmp/e2e-server.log 2>&1'",
+        "e2e": "npx concurrently -k -c \"#93c5fd,#fb7185\" \"npm run e2e:server\" \"npx playwright test\""
     },
     "devDependencies": {
+        "@playwright/test": "^1.55.0",
         "@tailwindcss/vite": "^4.2.1",
         "axios": "^1.11.0",
         "concurrently": "^9.0.1",

@@ -117,6 +117,23 @@ If you ran the seeder, use these credentials:
 
 ---
 
+## 🧪 Testing
+
+### Pest (Feature Tests)
+```bash
+php artisan test
+```
+
+### Browser E2E (Playwright)
+```bash
+npm install
+npx playwright install
+php artisan migrate:fresh --seed --env=e2e
+npm run e2e
+```
+
+---
+
 ## 📸 Screenshots
 *(Coming soon or add your images here)*
 
