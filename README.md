@@ -128,9 +128,14 @@ php artisan test
 ```bash
 npm install
 npx playwright install
+php artisan key:generate --env=e2e
 php artisan migrate:fresh --seed --env=e2e
 npm run e2e
 ```
+
+Notes:
+- E2E server runs on `http://127.0.0.1:8001` via `.env.e2e` and `npm run e2e`.
+- Server logs are redirected to `/tmp/e2e-server.log`.
 
 ---
 
