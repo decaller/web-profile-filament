@@ -98,6 +98,34 @@ class PageForm
                                 TextInput::make('button_label')->required(),
                                 TextInput::make('button_url')->required(),
                             ]),
+                        Block::make('recent_blogs')
+                            ->label('Recent Blogs/News')
+                            ->icon('heroicon-m-newspaper')
+                            ->schema([
+                                TextInput::make('heading')->required()->default('Latest News'),
+                                TextInput::make('count')->numeric()->default(3)->label('Number of posts to show'),
+                            ]),
+                        Block::make('dynamic_testimonials')
+                            ->label('Testimonials (From Database)')
+                            ->icon('heroicon-m-star')
+                            ->schema([
+                                TextInput::make('heading')->required()->default('What People Say'),
+                                TextInput::make('count')->numeric()->default(3)->label('Number of testimonials to show'),
+                            ]),
+                        Block::make('recent_activities')
+                            ->label('Recent Activities')
+                            ->icon('heroicon-m-camera')
+                            ->schema([
+                                TextInput::make('heading')->required()->default('Recent Activities'),
+                                TextInput::make('count')->numeric()->default(3)->label('Number of activities to show'),
+                            ]),
+                        Block::make('featured_publications')
+                            ->label('Featured Publications')
+                            ->icon('heroicon-m-document-text')
+                            ->schema([
+                                TextInput::make('heading')->required()->default('Featured Publications'),
+                                TextInput::make('count')->numeric()->default(3)->label('Number of publications to show'),
+                            ]),
                     ]),
             ]);
     }

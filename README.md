@@ -65,6 +65,8 @@ Once the prerequisites are ready, follow these steps:
    ```bash
    php artisan migrate --seed
    ```
+   > [!NOTE]
+   > The seeder will create a default administrator account and populate the site with sample pages, settings, and content.
 
 6. **Link Storage**:
    ```bash
@@ -90,8 +92,17 @@ npm run dev
 Visit the site at `http://127.0.0.1:8000`.
 Access the Admin Panel at `http://127.0.0.1:8000/admin`.
 
+#### 🔐 Default Credentials
+If you used the seeder (`--seed`), you can log in with:
+- **URL**: `/admin`
+- **Email**: `admin@admin.com`
+- **Password**: `password`
+
+---
+
 ## 🛠 Features
 - **Filament Admin Panel**: Easy management of pages and settings.
 - **Dynamic Page Builder**: Create layouts using custom components.
 - **Theme Switcher**: Supported by DaisyUI (Winter/Dim themes).
 - **Menu Builder**: Manage header and footer navigation menus.
+- **Ready-to-use Seeder**: Includes sample activities, testimonials, posts, and pre-configured pages.
