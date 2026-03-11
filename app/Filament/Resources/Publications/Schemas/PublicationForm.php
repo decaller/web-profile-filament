@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Publications\Schemas;
 
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class PublicationForm
 {
@@ -33,6 +34,11 @@ class PublicationForm
                     ->columnSpanFull(),
                 \Filament\Forms\Components\RichEditor::make('description')
                     ->columnSpanFull(),
+                Section::make('SEO')
+                    ->collapsed()
+                    ->schema([
+                        \RalphJSmit\Filament\SEO\SEO::make(),
+                    ]),
             ]);
     }
 }

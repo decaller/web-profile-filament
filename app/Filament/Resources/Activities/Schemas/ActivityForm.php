@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Activities\Schemas;
 
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class ActivityForm
 {
@@ -29,6 +30,11 @@ class ActivityForm
                     ->columnSpanFull(),
                 \Filament\Forms\Components\RichEditor::make('content')
                     ->columnSpanFull(),
+                Section::make('SEO')
+                    ->collapsed()
+                    ->schema([
+                        \RalphJSmit\Filament\SEO\SEO::make(),
+                    ]),
             ]);
     }
 }

@@ -4,8 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use RalphJSmit\Laravel\SEO\Support\HasSEO;
+
 class Setting extends Model
 {
+    use HasSEO;
     protected $guarded = [];
 
     protected $casts = [

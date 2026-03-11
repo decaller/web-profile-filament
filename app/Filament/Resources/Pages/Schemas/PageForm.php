@@ -7,10 +7,11 @@ use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 use Illuminate\Support\Str;
+use RalphJSmit\Filament\SEO\SEO;
 
 class PageForm
 {
@@ -126,6 +127,11 @@ class PageForm
                                 TextInput::make('heading')->required()->default('Featured Publications'),
                                 TextInput::make('count')->numeric()->default(3)->label('Number of publications to show'),
                             ]),
+                    ]),
+                Section::make('SEO')
+                    ->collapsed()
+                    ->schema([
+                        SEO::make(),
                     ]),
             ]);
     }

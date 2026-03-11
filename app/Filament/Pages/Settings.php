@@ -87,6 +87,7 @@ class Settings extends Page
                             ->columns(3)
                             ->columnSpanFull(),
                     ]),
+                \RalphJSmit\Filament\SEO\SEO::make(),
             ])
             ->statePath('data');
     }
@@ -99,6 +100,8 @@ class Settings extends Page
         $setting = \App\Models\Setting::first() ?? new \App\Models\Setting();
         $setting->fill($data);
         $setting->save();
+
+        $this->form->model($setting)->saveRelationships();
 
         \Filament\Notifications\Notification::make()
             ->success()

@@ -4,13 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @php
-        $settings = \App\Models\Setting::first();
-    @endphp
-    <title>@yield('title', config('app.name', 'School Profile')) - {{ $settings?->site_title ?? config('app.name', 'School Profile') }}</title>
-    @if($settings?->site_favicon)
-        <link rel="icon" href="{{ Storage::url($settings->site_favicon) }}">
-    @endif
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {!! seo() !!}
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 

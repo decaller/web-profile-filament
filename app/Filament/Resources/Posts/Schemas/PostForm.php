@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Posts\Schemas;
 
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class PostForm
 {
@@ -26,6 +27,11 @@ class PostForm
                 \Filament\Forms\Components\RichEditor::make('content')
                     ->columnSpanFull(),
                 \Filament\Forms\Components\DateTimePicker::make('published_at'),
+                Section::make('SEO')
+                    ->collapsed()
+                    ->schema([
+                        \RalphJSmit\Filament\SEO\SEO::make(),
+                    ]),
             ]);
     }
 }
