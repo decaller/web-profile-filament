@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\PageController;
+
+Route::get('/', [PageController::class, 'show'])->name('home');
+Route::get('/{slug}', [PageController::class, 'show'])->name('page.show');
