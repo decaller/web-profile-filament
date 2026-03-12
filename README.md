@@ -40,6 +40,72 @@ Build complex, responsive page layouts without writing code using our pre-built 
 
 ---
 
+## 🎨 Frontend Customization Guide
+
+### 1. Customize Theme (Global Styles)
+Theme and fonts are configured in `resources/css/app.css`:
+
+- **DaisyUI themes** live in the `@plugin "daisyui"` block.
+- **Fonts** live in the `@theme` block.
+- **Active theme** can also be set on the `<html>` tag via `data-theme` in `resources/views/layouts/app.blade.php`.
+- **Theme toggle** is wired via an `<input type="checkbox" class="theme-controller">` in `resources/views/partials/header.blade.php`.
+To switch themes, update both the `data-theme` on `<html>` and the toggle state/class in the header so they stay in sync.
+
+Example:
+```css
+@plugin "daisyui" {
+    themes: winter --default, dim --prefersdark;
+}
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+}
+```
+
+To switch the default theme, change `--default` or add/remove themes in that list.
+
+### 2. Customize Header / Footer
+The layout pulls these partials:
+- Header: `resources/views/partials/header.blade.php`
+- Footer: `resources/views/partials/footer.blade.php`
+- Layout wrapper: `resources/views/layouts/app.blade.php`
+
+These use DaisyUI + Tailwind classes, so you can safely change markup, layout, and class names there.
+
+### 3. Customize Existing Blocks
+Each page-builder block is a Blade partial in:
+- `resources/views/blocks/*.blade.php`
+
+The block data shape is defined in:
+- `app/Filament/Resources/Pages/Schemas/PageForm.php`
+
+Workflow to customize:
+1. Update the markup/classes in the block file you want.
+2. If you change fields, update the block schema in `app/Filament/Resources/Pages/Schemas/PageForm.php` so the editor matches the view.
+
+For static pages and detail views (e.g., activities, posts), templates live in:
+- `resources/views/pages/**`
+
+### 4. Add a New Block (Page Builder)
+1. Add a new block schema in `app/Filament/Resources/Pages/Schemas/PageForm.php`.
+2. Create a matching view in `resources/views/blocks/<your_block>.blade.php`.
+3. Use the `$data` array inside the Blade file for fields you define in the schema.
+4. The page renderer automatically includes the block by type via `resources/views/page.blade.php`, so no extra wiring is required.
+
+### 5. Tips: Import Tailwind/DaisyUI Templates (IDE AI)
+1. Create a hidden templates folder: `resources/views/.template/`
+2. Paste the new template HTML there as a reference file.
+3. Use an IDE AI prompt like:
+
+```
+Adapt the design from resources/views/.template/<file>.blade.php
+to the existing frontend views in resources/views/**,
+but do not change anything in resources/views/filament/**.
+Keep existing Blade variables and loops working.
+```
+
+---
+
 ## 🛠 Tech Stack
 
 | Layer | Technology |
