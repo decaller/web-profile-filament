@@ -140,7 +140,26 @@ Notes:
 ---
 
 ## 📸 Screenshots
-*(Coming soon or add your images here)*
+
+### 🌐 Frontend
+![Home Page](screenshots/home.png)
+
+### 🔐 Admin Panel
+| Login Page | Dashboard |
+| :---: | :---: |
+| ![Admin Login](screenshots/admin-login.png) | ![Admin Dashboard](screenshots/admin-dashboard.png) |
+
+| Pages Management | Page Edit |
+| :---: | :---: |
+| ![Admin Pages](screenshots/admin-pages.png) | ![Admin Page Edit](screenshots/admin-page-edit.png) |
+
+| Publications | Publication Edit |
+| :---: | :---: |
+| ![Admin Publications](screenshots/admin-publications.png) | ![Admin Publication Edit](screenshots/admin-publication-edit.png) |
+
+| Blog Posts | Settings |
+| :---: | :---: |
+| ![Admin Posts](screenshots/admin-posts.png) | ![Admin Settings](screenshots/admin-settings.png) |
 
 ---
 
