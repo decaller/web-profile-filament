@@ -174,6 +174,18 @@ npm run dev
 Visit the application at: `http://127.0.0.1:8000`
 Access the Admin Panel: `http://127.0.0.1:8000/admin`
 
+### 4. Docker (GHCR Image)
+
+This repo includes a ready-to-run `docker-compose.yml` that pulls the image from GHCR and serves it via Nginx.
+
+1. Set `APP_KEY` in `docker-compose.yml` (generate it with `php artisan key:generate --show`).
+2. Start the stack:
+    ```bash
+    docker compose up -d
+    ```
+
+Visit the application at: `http://localhost:8080`
+
 ---
 
 ## 🔐 Default Admin Access

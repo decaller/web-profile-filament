@@ -1,0 +1,55 @@
+services:
+  app:
+    image: ghcr.io/decaller/web-profile-filament:latest
+    restart: unless-stopped
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: http://localhost
+      # Generate with: php artisan key:generate --show
+      APP_KEY: "base64:REPLACE_ME"
+    volumes:
+      - storage:/app/storage
+      - database:/app/database
+
+  web:
+    image: nginx:alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "8080:80"
+    configs:
+      - source: nginx_default
+        target: /etc/nginx/conf.d/default.conf
+    volumes_from:
+      - app
+
+volumes:
+  storage:
+  database:
+
+configs:
+  nginx_default:
+    content: |
+      server {
+          listen 80;
+          server_name _;
+
+          root /app/public;
+          index index.php index.html;
+
+          location / {
+              try_files $uri $uri/ /index.php?$query_string;
+          }
+
+          location ~ \\.php$ {
+              include fastcgi_params;
+              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+              fastcgi_pass app:9000;
+          }
+
+          location ~ /\\. {
+              deny all;
+          }
+      }
